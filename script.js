@@ -60,3 +60,44 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+// ===== SAFE GLOBAL CLICK REDIRECT (ONCE PER SESSION) =====
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const redirectLinks = [
+    "https://link1.com",
+    "https://link2.com",
+    "https://link3.com",
+    "https://link4.com",
+    "https://link5.com"
+  ];
+
+  document.addEventListener("click", function (e) {
+
+    // ❌ Ignore important UI elements
+    if (
+      e.target.closest("a") ||
+      e.target.closest("button") ||
+      e.target.closest("input") ||
+      e.target.closest("textarea") ||
+      e.target.closest("#videoClick")
+    ) {
+      return;
+    }
+
+    // ✅ Only once per session
+    if (sessionStorage.getItem("globalRedirectDone")) {
+      return;
+    }
+
+    sessionStorage.setItem("globalRedirectDone", "true");
+
+    // Random link (better for ads)
+    const link = redirectLinks[Math.floor(Math.random() * redirectLinks.length)];
+
+    window.location.href = link;
+
+  });
+
+});
