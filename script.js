@@ -14,11 +14,14 @@ if (hamburger && mobileMenu) {
   });
 }
 
-
 // ===== VIDEO CLICK REDIRECT (ONCE PER DAY) =====
-const clickLayer = document.getElementById("videoClick");
 
-if (clickLayer) {
+document.addEventListener("DOMContentLoaded", function () {
+
+  const clickLayer = document.getElementById("videoClick");
+
+  if (!clickLayer) return;
+
   clickLayer.addEventListener("click", function () {
 
     const today = new Date().toDateString();
@@ -28,11 +31,12 @@ if (clickLayer) {
     if (lastClick !== today) {
       localStorage.setItem("videoRedirectDate", today);
 
-      // ✅ Direct redirect (no popup block)
+      // ✅ Direct redirect
       window.location.href = "https://www.profitablecpmratenetwork.com/kx44g0py?key=f7d11d3548b9f86652ee979f380e9b93";
     }
 
-    // Remove layer → allow video interaction
+    // Remove layer → allow video play next click
     clickLayer.style.display = "none";
   });
-}
+
+});
