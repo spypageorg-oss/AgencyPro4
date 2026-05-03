@@ -101,3 +101,29 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+// ===== AGE POPUP =====
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const popup = document.getElementById("agePopup");
+  const yesBtn = document.getElementById("ageYes");
+  const noBtn = document.getElementById("ageNo");
+
+  // Already accepted?
+  if (localStorage.getItem("ageVerified") === "true") {
+    popup.style.display = "none";
+  }
+
+  // YES click
+  yesBtn.addEventListener("click", function () {
+    localStorage.setItem("ageVerified", "true");
+    popup.style.display = "none";
+  });
+
+  // NO click
+  noBtn.addEventListener("click", function () {
+    window.location.href = "https://google.com"; // redirect anywhere
+  });
+
+});
