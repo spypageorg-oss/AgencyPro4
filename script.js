@@ -66,11 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
 
   const redirectLinks = [
-    "https://link1.com",
-    "https://link2.com",
-    "https://link3.com",
-    "https://link4.com",
-    "https://link5.com"
+    "https://omg10.com/4/10956500",
+    "https://www.profitablecpmratenetwork.com/n0wfsjta3e?key=e799bf33d5e76ce24c1ea752657f51bc",
+    "https://omg10.com/4/10929324",
+    "https://www.profitablecpmratenetwork.com/gu3qzip9d?key=92bbe3f6f938e3e43a9828b64e3d928c",
+    "https://omg10.com/4/10956544"
   ];
 
   document.addEventListener("click", function (e) {
