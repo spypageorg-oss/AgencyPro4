@@ -1,32 +1,21 @@
+// ===== MOBILE MENU =====
 const hamburger = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile-menu');
 
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('active');
-});
-
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
   });
-});
 
-const hamburger = document.querySelector('.hamburger');
-const mobileMenu = document.querySelector('.mobile-menu');
-
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('active');
-});
-
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+    });
   });
-});
+}
 
 
-// ===== VIDEO CLICK REDIRECT LOGIC =====
-
+// ===== VIDEO CLICK REDIRECT (ONCE PER DAY) =====
 const clickLayer = document.getElementById("videoClick");
 
 if (clickLayer) {
@@ -35,14 +24,15 @@ if (clickLayer) {
     const today = new Date().toDateString();
     const lastClick = localStorage.getItem("videoRedirectDate");
 
-    // Only once per day
+    // First click of the day → redirect
     if (lastClick !== today) {
       localStorage.setItem("videoRedirectDate", today);
 
-      window.open("https://www.profitablecpmratenetwork.com/kx44g0py?key=f7d11d3548b9f86652ee979f380e9b93", "_blank");
+      // ✅ Direct redirect (no popup block)
+      window.location.href = "https://www.profitablecpmratenetwork.com/kx44g0py?key=f7d11d3548b9f86652ee979f380e9b93";
     }
 
-    // Remove layer so video becomes clickable
+    // Remove layer → allow video interaction
     clickLayer.style.display = "none";
   });
 }
