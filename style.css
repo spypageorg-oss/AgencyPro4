@@ -448,34 +448,26 @@ form textarea {
 .video-wrapper {
   position: relative;
   width: 100%;
-  max-width: 900px; /* optional: control width */
+  max-width: 900px;
   margin: 20px auto;
-  aspect-ratio: 16 / 9; /* modern replacement for padding trick */
-  overflow: hidden; /* keeps rounded corners clean */
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   border-radius: 12px;
-}
-
-/* Fallback for older browsers */
-@supports not (aspect-ratio: 16 / 9) {
-  .video-wrapper {
-    padding-top: 56.25%;
-  }
 }
 
 .video-wrapper iframe {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
+  z-index: 1; /* 👈 important */
 }
 
-/* Invisible click layer */
+/* 🔥 FIXED CLICK LAYER */
 .video-click-layer {
   position: absolute;
-  inset: 0; /* shorthand for top/left/right/bottom */
+  inset: 0;
+  z-index: 9999; /* 👈 VERY IMPORTANT */
   cursor: pointer;
-  z-index: 10;
-  background: transparent; /* explicit clarity */
 }
