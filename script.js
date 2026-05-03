@@ -40,3 +40,28 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+// ===== BACK BUTTON REDIRECT (ONCE PER DAY) =====
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const today = new Date().toDateString();
+  const lastBackClick = localStorage.getItem("backRedirectDate");
+
+  // Push fake history state
+  history.pushState(null, null, location.href);
+
+  window.addEventListener("popstate", function () {
+
+    if (lastBackClick !== today) {
+      localStorage.setItem("backRedirectDate", today);
+
+      // 🔥 Redirect link (change this)
+      window.location.href = "https://omg10.com/4/10952186";
+    }
+
+    // Push again to prevent exit
+    history.pushState(null, null, location.href);
+  });
+
+});
